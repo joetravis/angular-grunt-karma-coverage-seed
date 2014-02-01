@@ -1,47 +1,67 @@
-files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  '../app/lib/angular/angular.js',
-  'lib/angular/angular-mocks.js',
+module.exports = function (config) {
+    config.set({
+        // base path, that will be used to resolve files and exclude
+        basePath: '..',
 
-  '../app/js/*.js',
+        frameworks: ['jasmine'],
 
-  'unit/*Spec.js'
-];
+        files: [
+            'app/lib/angular/angular.js',
+            'test/lib/angular/angular-mocks.js',
+            'app/js/*.js',
+            'test/unit/*Spec.js'
+        ],
 
-exclude = ['karma.conf.js'];
+        exclude: ['test/karma.conf.js'],
 
-// test results reporter to use
-// possible values: dots || progress || growl
-reporters = ['progress'];
+        //pre-processor for collecting code coverage
+        preprocessors: {
+            'src/*/*.js': 'coverage'
+        },
 
-// web server port
-port = process.env['KARMA_PORT'] || 8100;
+        // test results reporter to use
+        // report on progress, collect coverage and junit reports
+        reporters: ['progress', 'coverage', 'junit'],
 
+        //use cobertura coverage report for jenkins integration
+        coverageReporter: {
+            type: 'cobertura',
+            dir: 'test-results/'
+        },
 
-// cli runner port
-runnerPort = process.env['KARMA_RUNNER_PORT'] || 9100;
+        //collect junit report for jenkins integration
+        junitReporter: {
+            outputFile: 'test-results/junit.xml',
+            suite: ''
+        },
 
+        // web server port
+        port: process.env['KARMA_PORT'] || 8100,
 
-// enable / disable colors in the output (reporters and logs)
-colors = process.env['KARMA_COLORS'] || true;
+        // cli runner port
+        runnerPort: process.env['KARMA_RUNNER_PORT'] || 9100,
 
-// level of logging
-// possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-logLevel = LOG_INFO;
+        // enable / disable colors in the output (reporters and logs)
+        colors: process.env['KARMA_COLORS'] || true,
 
-// enable / disable watching file and executing tests whenever any file changes
-autoWatch = true;
+        // level of logging
+        // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+        logLevel: config.LOG_INFO,
 
-// Start these browsers, currently available:
-// - Chrome
-// - ChromeCanary
-// - Firefox
-// - Opera
-// - Safari
-// - PhantomJS
-browsers = [process.env['KARMA_BROWSER'] || 'Chrome'];
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
 
-// Continuous Integration mode
-// if true, it capture browsers, run tests and exit
-singleRun = false;
+        // Start these browsers, currently available:
+        // - Chrome
+        // - ChromeCanary
+        // - Firefox
+        // - Opera
+        // - Safari
+        // - PhantomJS
+        browsers: [process.env['KARMA_BROWSER'] || 'PhantomJS'],
+
+        // Continuous Integration mode
+        // if true, it capture browsers, run tests and exit
+        singleRun: false
+    })
+};
