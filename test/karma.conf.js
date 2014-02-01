@@ -25,8 +25,16 @@ module.exports = function (config) {
 
         //use cobertura coverage report for jenkins integration
         coverageReporter: {
-            type: 'cobertura',
-            dir: 'test-results/'
+            reporters: [
+                {
+                    type: 'cobertura',
+                    dir: 'test-results/'
+                },
+                {
+                    type: 'html',
+                    dir: 'test-results/'
+                }
+            ]
         },
 
         //collect junit report for jenkins integration
