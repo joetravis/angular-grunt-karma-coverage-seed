@@ -16,7 +16,7 @@ module.exports = function (config) {
 
         //pre-processor for collecting code coverage
         preprocessors: {
-            'src/*/*.js': 'coverage'
+            'test/unit/*.js': 'coverage'
         },
 
         // test results reporter to use
