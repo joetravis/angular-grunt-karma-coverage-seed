@@ -12,6 +12,11 @@ module.exports = function (grunt) {
             templates: ['app/partials/**/*.html']
         },
 
+        clean: [
+            'test-results',
+            'coverage'
+        ],
+
         //JS Test files
         test: {
             karmaConfig: 'test/karma.conf.js',
@@ -36,6 +41,22 @@ module.exports = function (grunt) {
             ci: {
                 configFile: '<%= test.karmaConfig %>',
                 singleRun: true
+            }
+        },
+
+        // copy coverage results to static location
+        copy: {
+            coverage: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['test-results/Phantom*/**/*'],
+                        dest: 'test-results/coverage/',
+                        rename: function (dest, src) {
+                            return dest + src.replace(/test-results\/Phantom[^\/]+\//, '/');
+                        }
+                    }
+                ]
             }
         },
 
@@ -70,10 +91,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concurrent');
 
     grunt.registerTask('web', ['connect:web']);
     grunt.registerTask('watch-tests', ['karma:dev']);
-    grunt.registerTask('default', ['concurrent:dev']);
-    grunt.registerTask('ci', ['karma:ci']);
+    grunt.registerTask('default', ['clean', 'concurrent:dev']);
+    grunt.registerTask('ci', ['clean', 'karma:ci', 'copy:coverage']);
 };
