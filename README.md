@@ -1,11 +1,11 @@
-## angular-grunt-seed — the seed for AngularJS apps with Grunt support (jshint, Karma, Watch, connect etc)
+## angular-grunt-karma-coverage-seed — the seed for AngularJS apps with Grunt coverage support for Jenkins (jshint, Karma (coverage), JUnit, PhantomJS, Watch, connect etc)
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects. This comes with default Grunt build for lint, Karma, Watch etc.
 
 
 ## How to use angular-grunt-seed
 
-Clone the angular-grunt-seed repository and start hacking...
+Clone the angular-grunt-karma-coverage-seed repository and start hacking...
 
 
 ### Running the app during development
@@ -19,6 +19,16 @@ This will use concurrent task runner to do following tasks in a watch mode:
 2) Watch for any JS (src and test files) changes and run Karma
 
 3) Start the Node server at "9000"
+
+### Running the app during CI process
+
+> grunt ci
+
+1) clean up old test result directories (coverage, test-results)
+
+2) Run Karma tests with coverage and junit reporters
+
+3) Copy Cobertura and HTML coverage results to a static directory
 
 
 ## Directory Layout
@@ -69,3 +79,7 @@ This will use concurrent task runner to do following tasks in a watch mode:
         directivessSpec.js      --> specs for directives
         filtersSpec.js          --> specs for filters
         servicesSpec.js         --> specs for services
+
+    test-results/
+        coverage/       --> Cobertura and HTML coverage reports
+        junit.xml       --> JUnit test results
