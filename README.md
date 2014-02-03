@@ -1,5 +1,7 @@
 ## angular-grunt-karma-coverage-seed — the seed for AngularJS apps with Grunt coverage support for Jenkins (jshint, Karma (coverage), JUnit, PhantomJS, Watch, connect etc)
 
+Built from a base of https://github.com/skusunam/angular-grunt-seed
+
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects. This comes with default Grunt build for lint, Karma, Watch etc.
 
 
