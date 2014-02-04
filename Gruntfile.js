@@ -60,6 +60,14 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            dist: {
+                files: {
+                    'app/css/app.css': 'sass/main.scss'
+                }
+            }
+        },
+
         connect: {
             web: {
                 options: {
@@ -74,6 +82,10 @@ module.exports = function (grunt) {
             jshint: {
                 files: ["<%= src.js %>", "<%= test.unit %>"],
                 tasks: ['jshint']
+            },
+            sass: {
+                files: ["**/.scss"],
+                tasks: ['sass:dist']
             }
         },
 
@@ -94,6 +106,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerTask('web', ['connect:web']);
     grunt.registerTask('watch-tests', ['karma:dev']);
