@@ -1,0 +1,12 @@
+{
+    "name": "project-name",
+    "version": "1.0.0",
+    "main": "app/index.html",
+    "dependencies": {
+        "angular": "~1.2"
+    },
+    "devDependencies": {
+        "angular-mocks": "~1.2",
+        "jquery": "~2.0"
+    }
+}
