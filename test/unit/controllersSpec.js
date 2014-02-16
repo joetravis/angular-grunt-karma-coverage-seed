@@ -2,32 +2,38 @@
 
 /* jasmine specs for controllers go here */
 
-//TODO: Fix this ---- Srini
+describe('controllers', function() {
+    var scope;
+    var $controllerConstructor;
 
-// describe('MyCtrl1', function(){
-//   var myCtrl1;
+    beforeEach(module('myApp.controllers'));
 
-//   beforeEach(function(){
-//     myCtrl1 = new MyCtrl1();
-//   });
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        $controllerConstructor = $controller;
+    }));
 
+    describe('MyCtrl1', function(){
+        var controller;
 
-//   it('should ....', function() {
-//     //spec body
-//   });
-// });
+        beforeEach(function() {
+            controller = $controllerConstructor('MyCtrl1', { $scope: scope });
+        });
 
+        it('should ....', function() {
+            //spec body
+        });
+    });
 
-// describe('MyCtrl2', function(){
-//   var myCtrl2;
+    describe('MyCtrl2', function(){
+        var controller;
 
+        beforeEach(function() {
+            controller = $controllerConstructor('MyCtrl2', { $scope: scope });
+        });
 
-//   beforeEach(function(){
-//     myCtrl2 = new MyCtrl2();
-//   });
-
-
-//   it('should ....', function() {
-//     //spec body
-//   });
-// });
+        it('should ....', function() {
+            //spec body
+        });
+    });
+});

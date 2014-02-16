@@ -86,6 +86,10 @@ module.exports = function (grunt) {
             sass: {
                 files: ["**/.scss"],
                 tasks: ['sass:dist']
+            },
+            karma: {
+                files: ["<%= src.js %>", "<%= test.unit %>"],
+                tasks: ['karma:dev']
             }
         },
 

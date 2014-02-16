@@ -6,8 +6,10 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         files: [
-            'app/lib/angular/angular.js',
-            'test/lib/angular/angular-mocks.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/sinonjs-built/pkg/sinon-1.7.3.js',
             'app/js/*.js',
             'test/unit/*Spec.js'
         ],
@@ -16,7 +18,7 @@ module.exports = function (config) {
 
         //pre-processor for collecting code coverage
         preprocessors: {
-            'test/unit/*.js': 'coverage'
+            'app/js/*.js': 'coverage'
         },
 
         // test results reporter to use
