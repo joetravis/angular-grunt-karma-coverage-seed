@@ -6,10 +6,10 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         files: [
-            'bower_components/angular/angular.js',
-            'bower_components/angular-resource/angular-resource.js',
-            'bower_components/angular-mocks/angular-mocks.js',
-            'bower_components/sinonjs-built/pkg/sinon-1.7.3.js',
+            'app/lib/angular/angular.js',
+            'app/lib/angular-resource/angular-resource.js',
+            'app/lib/angular-mocks/angular-mocks.js',
+            'app/lib/sinonjs-built/pkg/sinon-1.7.3.js',
             'app/js/*.js',
             'test/unit/*Spec.js'
         ],
