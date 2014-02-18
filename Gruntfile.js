@@ -58,18 +58,6 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            deploy: {
-                files: [
-                    {
-                        expand: false,
-                        src: ['app/*'],
-                        dest: '/var/www/html/',
-                        rename: function(dest, src) {
-                            return dest + src.replace(/app\/?/, '');
-                        }
-                    }
-                ]
-            }
         },
 
         sass: {
