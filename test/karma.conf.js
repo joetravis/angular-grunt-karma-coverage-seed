@@ -9,7 +9,7 @@ module.exports = function (config) {
             'app/lib/angular/angular.js',
             'app/lib/angular-resource/angular-resource.js',
             'app/lib/angular-mocks/angular-mocks.js',
-            'app/lib/sinonjs-built/pkg/sinon-1.7.3.js',
+            'app/lib/sinonjs-built/pkg/sinon.js',
             'app/js/*.js',
             'test/unit/*Spec.js'
         ],
